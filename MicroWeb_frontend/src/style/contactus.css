@@ -1,0 +1,51 @@
+.contactus_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  font-family: var(--font-family-brooklyn);
+}
+
+.contactus_title > h1 {
+  font-size: var(--font-size-mainbody-desktop);
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.contactus_title > p {
+  font-size: var(--font-size-body-desktop);
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.contactus_image {
+  width: 400px;
+  transition: all 0.3s ease-in-out;
+}
+
+.contactus_image:hover {
+  transform: scale(1.05);
+}
+.contactus_form {
+  padding-left: 30px;
+  justify-self: start;
+  width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactus_form input,
+.contactus_form textarea {
+  font-size: var(--font-size-body-desktop);
+  padding: 0.5em 1em;
+  font-family: var(--font-family-brooklyn);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.contactus_form textarea {
+  height: 120px;
+}

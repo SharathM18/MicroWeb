@@ -1,0 +1,83 @@
+.add_product_container > h1 {
+  padding: 20px 20px 10px 20px;
+  text-align: center;
+  font-size: var(--font-size-subheading-desktop);
+  font-family: var(--font-family-brooklyn);
+}
+
+.add_product_container > p {
+  color: var(--color-body);
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: var(--font-size-body-desktop);
+}
+
+.product_form_container {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+}
+
+.preview_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview_image > img,
+.preview_image > p {
+  width: 220px;
+  height: 300px;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+}
+
+.preview_image > img:hover,
+.preview_image > p:hover {
+  transform: scale(1.05);
+}
+
+.preview_image > p {
+  text-align: center;
+  padding-top: 140px;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.product_form {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--color-body);
+}
+
+.product_form input,
+.product_form textarea {
+  font-size: var(--font-size-body-desktop);
+  padding: 0.5em 1em;
+  font-family: var(--font-family-brooklyn);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.product_form > .merge_field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product_form textarea {
+  height: 100px;
+  font-size: var(--font-size-subbody-desktop);
+}
+
+.merge_field > .price,
+.merge_field > .stock {
+  width: 130px;
+}
+
+.category_cell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

@@ -1,0 +1,53 @@
+.add_address_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 40px;
+  justify-items: center;
+  align-items: center;
+  font-family: var(--font-family-brooklyn);
+}
+
+.address_title > h1 {
+  font-size: var(--font-size-mainbody-desktop);
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.address_title > p {
+  font-size: var(--font-size-body-desktop);
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.address_image {
+  width: 400px;
+  transition: all 0.3s ease-in-out;
+}
+
+.address_image:hover {
+  transform: scale(1.05);
+}
+
+.add_address_form {
+  padding-left: 40px;
+  justify-self: start;
+  width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add_address_form input {
+  font-size: var(--font-size-body-desktop);
+  padding: 0.5em 1em;
+  font-family: var(--font-family-brooklyn);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.merge_field {
+  display: flex;
+  gap: 10px;
+}

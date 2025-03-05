@@ -1,0 +1,124 @@
+@font-face {
+  font-family: "Brooklyn";
+  src: url("./assets/font/Brooklyn.woff2");
+}
+
+@font-face {
+  font-family: "Franie";
+  src: url("./assets/font/Franie.woff2");
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* light Mode Styles */
+/* [data-theme="light"] {
+  --color-title: #000000;
+  --color-subheading: #333333;
+  --color-body: #111111;
+  --color-border: #b3b3b3;
+  --color-background: #fafafa;
+  --color-hover: #b5b5b5;
+  --color-mark: #007bff;
+
+  --color-button: #007bff;
+} */
+
+/* dark Mode Styles */
+/* [data-theme="dark"] {
+  --color-title: #ffffff;
+  --color-subheading: #b0b0b0;
+  --color-body: #e0e0e0;
+  --color-border: #444444;
+  --color-background: #121212;
+  --color-hover: #676767;
+  --color-mark: #4d9de0;
+
+  --color-button: #4d9de0;
+} */
+::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  /* font size */
+  --font-size-title-desktop: 2.25rem;
+  --font-size-subheading-desktop: 2rem;
+  --font-size-mainbody-desktop: 1.25rem;
+  --font-size-body-desktop: 1rem;
+  --font-size-subbody-desktop: 0.875rem;
+
+  /* font family  */
+  --font-family-brooklyn: "Brooklyn", sans-serif;
+  --font-family-franie: "Franie", serif;
+
+  --color-title: #000000;
+  --color-subheading: #333333;
+  --color-body: #111111;
+  --color-border: #b3b3b3;
+  --color-background: #fafafa;
+  --color-hover: #e2e1e1;
+  --color-mark: #007bff;
+  --color-error: rgb(228, 117, 117);
+
+  --color-button: #007bff;
+}
+
+body {
+  font-family: var(--font-family-brooklyn);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: var(----color-background-color);
+  color: var(--color-body);
+}
+
+button {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  padding: 0.4em 0.6em;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-body);
+  font-family: var(--font-family-brooklyn);
+  font-size: var(--font-size-subbody-desktop);
+  font-weight: 500;
+  background-color: var(--color-background);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--color-hover);
+  border: 1.5px solid var(--color-border);
+}

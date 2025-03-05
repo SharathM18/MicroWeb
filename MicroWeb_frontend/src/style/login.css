@@ -1,0 +1,70 @@
+.login_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 60px;
+  justify-items: center;
+  align-items: center;
+  font-family: var(--font-family-brooklyn);
+}
+
+.login_box h1 {
+  font-size: var(--font-size-subheading-desktop);
+  margin: 0 auto;
+  padding-bottom: 5px;
+}
+
+.login_box > p {
+  font-size: var(--font-size-body-desktop);
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+
+.login_image {
+  width: 400px;
+  transition: all 0.3s ease-in-out;
+}
+
+.login_image:hover {
+  transform: scale(1.05);
+}
+
+.login_box {
+  padding-left: 40px;
+  justify-self: start;
+  width: 500px;
+}
+
+.login_box,
+.login_fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login_fields input {
+  font-size: var(--font-size-body-desktop);
+  padding: 0.5em 1em;
+  font-family: var(--font-family-brooklyn);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.submit_btn {
+  margin: 10px auto;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field > label {
+  font-size: var(--font-size-body-desktop);
+}
+
+.signup_link,
+.login_link {
+  margin: 0 auto;
+}

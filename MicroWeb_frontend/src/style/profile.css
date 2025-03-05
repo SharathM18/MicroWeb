@@ -1,0 +1,30 @@
+.profile_title,
+.profile_sub_heading {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.profile_sub_heading {
+  font-size: var(--font-size-subbody-desktop);
+}
+
+.error_msg {
+  color: var(--color-error);
+  font-size: var(--font-size-body-desktop);
+  margin: 10px 0;
+}
+
+.logout_btn {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile_card_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
