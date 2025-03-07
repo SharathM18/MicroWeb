@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 import { signup } from "../../store/authSlice";
 import axiosInstance from "../../utils/axiosInstance";
+import axiosInstanceProducts from "../../utils/axiosInstanceProducts";
 
 import loginImage from "../../assets/images/undraw_in-the-zone.svg";
 
@@ -36,6 +37,8 @@ const Signup = () => {
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
       axiosInstance.defaults.headers.common["x-auth-token"] = data.token;
+      axiosInstanceProducts.defaults.headers.common["x-auth-token"] =
+        data.token;
 
       dispatch(signup({ token: data.token, userId: data.data.user_id }));
 

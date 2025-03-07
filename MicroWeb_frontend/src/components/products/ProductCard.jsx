@@ -51,12 +51,49 @@ const ProductCard = (props) => {
 
           <div className="product_info">
             <h3 className="product_card_price">Price: {price}</h3>
-            <h3 className="stock">Stock: {stock > 0 && stock}</h3>
+            {stock > 0 && <h3 className="stock">Stock: {stock}</h3>}
             <h3 className="stock">{stock > 0 ? "In stock" : "Out of stock"}</h3>
           </div>
 
-          {userCurrentRole === "buyer" ? (
-            // buyer btns
+          {isAuthenticated && userCurrentRole === "buyer" ? (
+            // isAuthenticated and buyer btns
+            <div className="product_btn">
+              <button
+                className="btn"
+                onClick={() =>
+                  !isAuthenticated
+                    ? navigate("/login")
+                    : navigate(`/product/buyproduct/${_id}}`, { state: props })
+                }
+              >
+                Buy
+              </button>
+              <button
+                className="btn"
+                onClick={() => (!isAuthenticated ? navigate("/login") : null)}
+              >
+                Add to Cart
+              </button>
+            </div>
+          ) : isAuthenticated && userCurrentRole === "seller" ? (
+            // isAuthenticated and seller btns
+            <div className="product_btn">
+              <button
+                className="btn"
+                onClick={() =>
+                  navigate(`/product/updateproduct/${_id}`, {
+                    state: props,
+                  })
+                }
+              >
+                Edit
+              </button>
+              <button className="btn" onClick={() => mutate(_id)}>
+                {isPending ? "Deleting" : "Delete"}
+              </button>
+            </div>
+          ) : (
+            // seller btns and isAuthenticated is false
             <div className="product_btn">
               <button
                 className="btn"
@@ -69,21 +106,6 @@ const ProductCard = (props) => {
                 onClick={() => (!isAuthenticated ? navigate("/login") : null)}
               >
                 Add to Cart
-              </button>
-            </div>
-          ) : (
-            //seller btns
-            <div className="product_btn">
-              <button
-                className="btn"
-                onClick={() =>
-                  navigate(`/product/updateproduct/${_id}`, { state: props })
-                }
-              >
-                Edit
-              </button>
-              <button className="btn" onClick={() => mutate(_id)}>
-                {isPending ? "Deleting" : "Delete"}
               </button>
             </div>
           )}

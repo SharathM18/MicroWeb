@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Toaster, toast } from "sonner";
 
 import axiosInstance from "./utils/axiosInstance";
+import axiosInstanceProducts from "./utils/axiosInstanceProducts";
 import { login, logout } from "./store/authSlice";
 
 import Navbar from "./components/Navbar";
@@ -40,6 +41,9 @@ function App() {
           );
 
           axiosInstance.defaults.headers.common["x-auth-token"] =
+            response.data.token;
+
+          axiosInstanceProducts.defaults.headers.common["x-auth-token"] =
             response.data.token;
         } catch (error) {
           toast.error(

@@ -1,6 +1,7 @@
 import axios from "axios";
 import store from "../store/store";
 import { logout } from "../store/authSlice";
+import { toast } from "sonner";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:5000/",
@@ -15,6 +16,13 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response) {
       const status = error.response.status;
+      toast.error(
+        error.response?.data?.error ||
+          "Something went wrong. Please try to login again.",
+        {
+          duration: 3000,
+        }
+      );
 
       if (status === 401) {
         // Unauthorized access → Token is invalid or expired

@@ -13,7 +13,7 @@ import Login from "./components/auth/Login.jsx";
 import Signup from "./components/auth/Signup.jsx";
 import MyProducts from "./components/products/MyProducts.jsx";
 import Profile from "./components/profile/Profile.jsx";
-import Cart from "./components/Cart.jsx";
+import Cart from "./components/order/Cart.jsx";
 import Orders from "./components/Orders.jsx";
 import PageNotFound from "./utils/PageNotFound.jsx";
 import ProfileAddressCard from "./components/profile/ProfileAccountCard.jsx";
@@ -24,6 +24,7 @@ import UpdateAddress from "./components/profile/UpdateAddress.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AddProduct from "./components/products/AddProducts.jsx";
 import UpdateProducts from "./components/products/UpdateProducts.jsx";
+import BuyProduct from "./components/order/BuyProduct.jsx";
 
 import "./index.css";
 
@@ -118,6 +119,14 @@ const route = createBrowserRouter([
         element: (
           <ProtectedRoute isRouteNeededAuth={true}>
             <Cart />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/product/buyproduct/:id",
+        element: (
+          <ProtectedRoute isRouteNeededAuth={true}>
+            <BuyProduct />,
           </ProtectedRoute>
         ),
       },

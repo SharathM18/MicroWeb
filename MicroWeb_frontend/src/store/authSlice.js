@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../utils/axiosInstance";
+import axiosInstanceProducts from "../utils/axiosInstanceProducts";
 
 const initialState = {
   isAuthenticated: false,
@@ -29,6 +30,7 @@ const authSlice = createSlice({
       state.token = null;
       localStorage.removeItem("token");
       axiosInstance.defaults.headers.common["x-auth-token"] = null;
+      axiosInstanceProducts.defaults.headers.common["x-auth-token"] = null;
     },
   },
 });

@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 import { login } from "../../store/authSlice";
 import axiosInstance from "../../utils/axiosInstance";
+import axiosInstanceProducts from "../../utils/axiosInstanceProducts";
 
 import "../../style/login.css";
 
@@ -35,6 +36,8 @@ const Login = () => {
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
       axiosInstance.defaults.headers.common["x-auth-token"] = data.token;
+      axiosInstanceProducts.defaults.headers.common["x-auth-token"] =
+        data.token;
 
       dispatch(login({ token: data.token, userId: data.data }));
 
