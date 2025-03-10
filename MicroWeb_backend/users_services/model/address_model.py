@@ -58,7 +58,6 @@ class AddressModel:
 
     def update_address(self, address_id, address):
         try:
-
             if "_id" in address:
                 del address["_id"]
                 del address["createdAt"]

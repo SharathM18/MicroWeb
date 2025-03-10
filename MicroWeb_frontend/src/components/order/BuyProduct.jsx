@@ -27,6 +27,7 @@ const BuyProduct = () => {
       selectedQuantity,
       totalPrice,
     },
+
     sellerId: buyProductData.sellerId,
     userId,
     shippingAddress: selectedAddressId,
@@ -52,7 +53,7 @@ const BuyProduct = () => {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries(["products"]);
-      navigate("/profile/orders");
+      navigate("/orders");
       toast.success(data.message || "Order placed successfully", {
         duration: 3000,
       });
@@ -63,8 +64,6 @@ const BuyProduct = () => {
       });
     },
   });
-
-  console.log(orderData);
 
   return (
     <>
@@ -123,7 +122,7 @@ const BuyProduct = () => {
 
         <div className="final_stage">
           <p>Total Price: {totalPrice}</p>
-          <button className="btn" onClick={() => mutate({ orderData })}>
+          <button className="btn" onClick={() => mutate(orderData)}>
             {isPending ? "Order Processing..." : "Proceed to Pay"}
           </button>
         </div>

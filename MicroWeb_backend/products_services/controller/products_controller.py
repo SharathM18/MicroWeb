@@ -287,7 +287,6 @@ class ProductsController:
         return jsonify(db_response), 200
 
     def delete_seller_product(self, product_id):
-
         db_response = self.products_model.delete_seller_product(product_id)
 
         if db_response.get("status") == "fail":
