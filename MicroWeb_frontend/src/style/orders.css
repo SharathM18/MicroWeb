@@ -1,0 +1,23 @@
+.order_headers > h1 {
+  text-align: center;
+  padding: 10px 0 5px 0;
+  font-size: var(--font-size-subheading-desktop);
+  font-family: var(--font-family-brooklyn);
+}
+
+.order_headers > p {
+  text-align: center;
+  padding: 0 0 15px 0;
+}
+
+.order_box_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.no_order {
+  padding-top: 30px;
+  font-size: var(--font-size-body-desktop);
+}

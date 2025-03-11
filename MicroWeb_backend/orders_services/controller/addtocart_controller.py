@@ -17,6 +17,9 @@ class AddToCartController:
         if db_response.get("status") == 201:
             return db_response, 201
 
+        if db_response.get("status") == 400:
+            return db_response, 400
+
         return db_response, 500
 
     def addtocart_get(self, user_id):

@@ -14,7 +14,7 @@ import Signup from "./components/auth/Signup.jsx";
 import MyProducts from "./components/products/MyProducts.jsx";
 import Profile from "./components/profile/Profile.jsx";
 import Cart from "./components/order/Cart.jsx";
-import Orders from "./components/Orders.jsx";
+import Orders from "./components/order/Orders.jsx";
 import PageNotFound from "./utils/PageNotFound.jsx";
 import ProfileAddressCard from "./components/profile/ProfileAccountCard.jsx";
 import ProfileAccountContainer from "./components/profile/ProfileAddressContainer.jsx";

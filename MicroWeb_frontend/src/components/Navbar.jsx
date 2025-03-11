@@ -12,6 +12,8 @@ const Navbar = () => {
     (state) => state.userRole.userCurrentRole
   );
 
+  const cartCount = useSelector((state) => state.cartCount.cartCount);
+
   const navbarItem = [
     {
       name: "Home",
@@ -102,7 +104,7 @@ const Navbar = () => {
             </NavLink>
           ) : item.authStatus && item.role && item.name === "Cart" ? (
             <NavLink to={item.path} key={idx} className="navbar_cart">
-              {item.name} <span className="cart_count">0</span>
+              {item.name} <span className="cart_count">{cartCount}</span>
             </NavLink>
           ) : null
         )}

@@ -1,19 +1,24 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 import axiosInstanceProducts from "../../utils/axiosInstanceProducts";
+import axiosInstanceOrder from "../../utils/axiosInstanceOrder";
+import { setCartCount } from "../../store/cartCount";
 
 import "../../style/productCard.css";
 
 const ProductCard = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { _id, images, description, price, stock, title } = props;
   const userCurrentRole = useSelector(
     (state) => state.userRole.userCurrentRole
   );
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const userId = useSelector((state) => state.auth.userId);
+
   const queryClient = useQueryClient();
 
   // send delete request to the server
@@ -32,6 +37,26 @@ const ProductCard = (props) => {
       const errorMessage =
         error.response?.data?.message ||
         "Something went wrong. Please try again. (frontend)";
+      toast.error(errorMessage, { duration: 3000 });
+    },
+  });
+
+  // sends a post request to the server to add the product to the cart
+  const { mutate: addtocart, isPending: isAddtocart } = useMutation({
+    mutationFn: async (cartDetails) => {
+      console.log(cartDetails);
+      const response = await axiosInstanceOrder.post("/addtocart", cartDetails);
+      return response.data;
+    },
+    onSuccess: (data) => {
+      dispatch(setCartCount(data.cartCount));
+      queryClient.invalidateQueries(["cart"]);
+      toast.success(data.message || "Product added to cart!");
+    },
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message ||
+        "Failed to add to cart. Please try again.";
       toast.error(errorMessage, { duration: 3000 });
     },
   });
@@ -63,6 +88,8 @@ const ProductCard = (props) => {
                 onClick={() =>
                   !isAuthenticated
                     ? navigate("/login")
+                    : stock === 0
+                    ? toast.error("Out of Stock – Check back soon!")
                     : navigate(`/product/buyproduct/${_id}}`, { state: props })
                 }
               >
@@ -70,9 +97,18 @@ const ProductCard = (props) => {
               </button>
               <button
                 className="btn"
-                onClick={() => (!isAuthenticated ? navigate("/login") : null)}
+                onClick={() =>
+                  !isAuthenticated
+                    ? navigate("/login")
+                    : stock === 0
+                    ? toast.error("Sorry, this item can’t be added right now.")
+                    : addtocart({
+                        userId: userId,
+                        productId: _id,
+                      })
+                }
               >
-                Add to Cart
+                {isAddtocart ? "Adding" : "Add to Cart"}
               </button>
             </div>
           ) : isAuthenticated && userCurrentRole === "seller" ? (

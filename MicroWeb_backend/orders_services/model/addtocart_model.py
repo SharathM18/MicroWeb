@@ -9,9 +9,28 @@ class AddToCartModel:
 
     def addtocart_post(self, data):
         try:
+            cart_prod = cart_collection.find_one(
+                {
+                    "userId": ObjectId(data["userId"]),
+                    "productId": ObjectId(data["productId"]),
+                }
+            )
+
+            if cart_prod:
+                return {"status": 400, "message": "Product already in cart"}
+
+            data["userId"] = ObjectId(data["userId"])
+            data["productId"] = ObjectId(data["productId"])
+
             cart_collection.insert_one(data)
 
-            return {"status": 201, "message": "Product added to cart successfully"}
+            cart_count = list(cart_collection.find({}))
+
+            return {
+                "status": 201,
+                "message": "Product added to cart successfully",
+                "cartCount": len(cart_count),
+            }
 
         except Exception as e:
             return {
@@ -45,6 +64,7 @@ class AddToCartModel:
                     product["_id"] = str(product["_id"])
                     product["categoryId"] = str(product["categoryId"])
                     product["sellerId"] = str(product["sellerId"])
+                    product["cartId"] = str(item["_id"])
 
                     final_products.append(product)
 
