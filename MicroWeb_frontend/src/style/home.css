@@ -1,0 +1,28 @@
+.brand_logo > h1 {
+  padding: 20px;
+  font-family: var(--font-family-brooklyn);
+  text-align: center;
+}
+
+.footer {
+  background-color: var(--color-background);
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_links {
+  display: flex;
+  gap: 10px;
+}
+
+.footer_links > a {
+  color: var(--color-body);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.second_box {
+  margin: 5px 0;
+}

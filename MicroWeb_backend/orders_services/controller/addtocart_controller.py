@@ -43,3 +43,14 @@ class AddToCartController:
             return db_response, 200
 
         return db_response, 500
+
+    def cart_delete(self, user_id):
+        if not user_id:
+            return {"status": 400, "message": "User ID is required"}, 400
+
+        db_response = self.addtocart_model.cart_delete(user_id)
+
+        if db_response.get("status") == 200:
+            return db_response, 200
+
+        return db_response, 500

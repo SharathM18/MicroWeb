@@ -80,3 +80,16 @@ class AddToCartModel:
                 "message": "Something went wrong. Please try again later.",
                 "error": str(e),
             }
+
+    def cart_delete(self, user_id):
+        try:
+            res = cart_collection.delete_many({"userId": ObjectId(user_id)})
+
+            return {"status": 200, "message": "Product removed from cart successfully"}
+
+        except Exception as e:
+            return {
+                "status": 500,
+                "message": "Something went wrong. Please try again later.",
+                "error": str(e),
+            }

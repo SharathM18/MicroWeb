@@ -24,3 +24,9 @@ def addtocart_get(user_id):
 @addtocart_bp.route("/addtocart/delete/<cart_id>", methods=["DELETE"])
 def addtocart_delete(cart_id):
     return addtocart_controller.addtocart_delete(cart_id)
+
+
+# cartId is required
+@addtocart_bp.route("/cart/deleteall/<user_id>", methods=["DELETE"])
+def cart_delete(user_id):
+    return addtocart_controller.cart_delete(user_id)

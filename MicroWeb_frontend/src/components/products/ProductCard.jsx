@@ -76,7 +76,9 @@ const ProductCard = (props) => {
 
           <div className="product_info">
             <h3 className="product_card_price">Price: {price}</h3>
-            {stock > 0 && <h3 className="stock">Stock: {stock}</h3>}
+            {isAuthenticated
+              ? stock > 0 && <h3 className="stock">Stock: {stock}</h3>
+              : null}
             <h3 className="stock">{stock > 0 ? "In stock" : "Out of stock"}</h3>
           </div>
 

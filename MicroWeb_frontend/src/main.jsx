@@ -1,6 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  isRouteErrorResponse,
+  RouterProvider,
+} from "react-router-dom";
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -25,6 +29,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AddProduct from "./components/products/AddProducts.jsx";
 import UpdateProducts from "./components/products/UpdateProducts.jsx";
 import BuyProduct from "./components/order/BuyProduct.jsx";
+import PaymentPage from "./components/PaymentPage.jsx";
 
 import "./index.css";
 
@@ -40,7 +45,7 @@ const route = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "products",
+        path: "/products",
         element: <Products />,
       },
       {
@@ -76,7 +81,7 @@ const route = createBrowserRouter([
         ),
       },
       {
-        path: "product/updateproduct/:id",
+        path: "/product/updateproduct/:id",
         element: (
           <ProtectedRoute isRouteNeededAuth={true}>
             <UpdateProducts />,
@@ -135,6 +140,14 @@ const route = createBrowserRouter([
         element: (
           <ProtectedRoute isRouteNeededAuth={true}>
             <Orders />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/payment",
+        element: (
+          <ProtectedRoute isRouteNeededAuth={true}>
+            <PaymentPage />
           </ProtectedRoute>
         ),
       },

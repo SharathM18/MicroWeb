@@ -53,7 +53,7 @@ const BuyProduct = () => {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries(["products"]);
-      navigate("/orders");
+      navigate("/payment");
       toast.success(data.message || "Order placed successfully", {
         duration: 3000,
       });

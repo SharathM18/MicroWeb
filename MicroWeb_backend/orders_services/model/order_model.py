@@ -40,7 +40,12 @@ class OrderModel:
                     {"userId": 0},
                 )
 
-                del user_address["_id"]
+                if user_address:
+                    del user_address["_id"]
+                    order_data["shippingAddress"] = user_address
+                else:
+                    # Optional: log that the address was not found, or handle it gracefully
+                    order_data["shippingAddress"] = {}
 
                 # Optional: Ensure shippingAddress is not None
                 order_data["shippingAddress"] = user_address if user_address else {}

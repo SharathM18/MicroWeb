@@ -1,0 +1,23 @@
+.payment_logo {
+  display: flex;
+}
+
+.payment_container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 30px;
+}
+
+.payment_btn {
+  display: flex;
+  gap: 30px;
+}
+
+.payment_container > h1 {
+  font-family: var(--font-family-brooklyn);
+  font-size: var(--font-size-subheading-desktop);
+}
